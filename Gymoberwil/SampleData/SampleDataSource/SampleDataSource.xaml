@@ -1,0 +1,12 @@
+﻿<!--
+      *********    DIESE DATEI DARF NICHT GEÄNDERT WERDEN     *********
+      Diese Datei wurde von einem Designwerkzeug erstellt. Änderungen
+      dieser Datei können Fehler verursachen.
+-->
+<SampleData:SampleDataSource xmlns:SampleData="clr-namespace:Expression.Blend.SampleData.SampleDataSource" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+  <SampleData:SampleDataSource.Collection>
+    <SampleData:Item Name="Mathematik" Beschreibung="O aus 4 Noten" Durchschnitt="4.25" Datum="12.04.2012" Not="4.52" Zählweise="x0.5" />
+    <SampleData:Item Name="Deutsch" Beschreibung="0 aus 1 Noten" Durchschnitt="5.43" Datum="12.04.2012" Not="3.03" Zählweise="x0.12" />
+    <SampleData:Item Name="Bildnerisches Gestalten" Beschreibung="O aus 6 Noten" Durchschnitt="4.2" Datum="12.04.2012" Not="5.78" Zählweise="x1" />
+  </SampleData:SampleDataSource.Collection>
+</SampleData:SampleDataSource>

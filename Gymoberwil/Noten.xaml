@@ -1,0 +1,130 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="Gymoberwil.PivotPage1"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    toolkit:TiltEffect.IsTiltEnabled="True"
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait"  Orientation="Portrait"
+    shell:SystemTray.IsVisible="True" BackKeyPress="PhoneApplicationPage_BackKeyPress">
+
+
+    <toolkit:TransitionService.NavigationInTransition>
+        <toolkit:NavigationInTransition>
+            <toolkit:NavigationInTransition.Backward>
+                <toolkit:TurnstileFeatherTransition Mode="BackwardIn"/>
+            </toolkit:NavigationInTransition.Backward>
+            <toolkit:NavigationInTransition.Forward>
+                <toolkit:TurnstileFeatherTransition Mode="ForwardIn"/>
+            </toolkit:NavigationInTransition.Forward>
+        </toolkit:NavigationInTransition>
+    </toolkit:TransitionService.NavigationInTransition>
+    <toolkit:TransitionService.NavigationOutTransition>
+        <toolkit:NavigationOutTransition>
+            <toolkit:NavigationOutTransition.Backward>
+                <toolkit:TurnstileFeatherTransition Mode="BackwardOut"/>
+            </toolkit:NavigationOutTransition.Backward>
+            <toolkit:NavigationOutTransition.Forward>
+                <toolkit:TurnstileFeatherTransition Mode="ForwardOut"/>
+            </toolkit:NavigationOutTransition.Forward>
+        </toolkit:NavigationOutTransition>
+    </toolkit:TransitionService.NavigationOutTransition>
+
+
+    <phone:PhoneApplicationPage.Resources>
+
+        <DataTemplate x:Key="FachTemplate">
+            <StackPanel>
+                <Grid toolkit:SlideInEffect.LineIndex="0" Margin="11,2,0,1" Width="445" HorizontalAlignment="Left" Background="Black">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="54"/>
+                        <RowDefinition Height="35"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="5*" />
+                        <ColumnDefinition Width="150" />
+                        <ColumnDefinition Width="52" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="{Binding Datum}" Grid.Column="0" Grid.Row="0" toolkit:SlideInEffect.LineIndex="2" VerticalAlignment="Bottom" FontWeight="Bold" FontSize="40" />
+                    <TextBlock Text="{Binding Name}" TextTrimming="WordEllipsis"  Grid.Column="0" Grid.Row="1" toolkit:SlideInEffect.LineIndex="2" FontSize="24" />
+                    <TextBlock Text="{Binding Not}" Grid.Column="1" Grid.Row="0" Grid.RowSpan="2" toolkit:SlideInEffect.LineIndex="3" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="81" />
+                    <TextBlock Text="{Binding Zählweise}" Grid.Column="2" Grid.Row="1" VerticalAlignment="Top" toolkit:SlideInEffect.LineIndex="4" HorizontalAlignment="Right" FontSize="30" />
+                </Grid>
+            </StackPanel>
+        </DataTemplate>
+    </phone:PhoneApplicationPage.Resources>
+
+
+    <!--LayoutRoot ist das Stammraster, in dem alle anderen Seiteninhalte platziert werden-->
+    <Grid x:Name="LayoutRoot" Background="Transparent" >
+        <!--Pivotsteuerelement-->
+        <phone:Pivot x:Name="Noten" Title="NOTEN"  toolkit:TurnstileFeatherEffect.FeatheringIndex="0">
+            <!--Pivotelement eins-->
+            <phone:PivotItem Header="Übersicht" >
+                <ScrollViewer>
+                    <phone:LongListSelector x:Name="Übersicht" toolkit:TurnstileFeatherEffect.FeatheringIndex="-1" ItemsSource="{Binding Collection}" Tap="übersicht_Tag" >
+                        <phone:LongListSelector.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel>
+                                    <Grid toolkit:SlideInEffect.LineIndex="0" Margin="11,2,0,1" Width="445" HorizontalAlignment="Left" Background="Black">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="54"/>
+                                            <RowDefinition Height="35"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="155" />
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Text="{Binding Name}" Grid.Column="0" Grid.Row="0" toolkit:SlideInEffect.LineIndex="2" TextTrimming="WordEllipsis" VerticalAlignment="Bottom" FontWeight="Bold" FontSize="40" />
+                                        <TextBlock Text="{Binding Beschreibung}" Grid.Column="0" Grid.Row="1" toolkit:SlideInEffect.LineIndex="2" TextTrimming="WordEllipsis" FontSize="24" />
+                                        <TextBlock Text="{Binding Durchschnitt}" Grid.Column="1" Grid.Row="0" Grid.RowSpan="2" toolkit:SlideInEffect.LineIndex="3" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="81" />
+                                    </Grid>
+                                </StackPanel>
+                            </DataTemplate>
+                        </phone:LongListSelector.ItemTemplate>
+                        <phone:LongListSelector.ListFooter>
+                            <TextBlock Height="70" />
+                        </phone:LongListSelector.ListFooter>
+                    </phone:LongListSelector>
+                </ScrollViewer>
+            </phone:PivotItem>
+
+			<!--
+            <phone:PivotItem Header="item2">
+                <StackPanel>
+                    <Grid toolkit:SlideInEffect.LineIndex="0" Margin="11,2,0,1" Width="445" HorizontalAlignment="Left" Background="Black">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="5*" />
+                            <ColumnDefinition Width="3*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Text="20.04.2014" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" toolkit:SlideInEffect.LineIndex="2" VerticalAlignment="Bottom" FontWeight="Bold" FontSize="49" />
+                        <TextBlock Text="Lorem ipsum dolores amet sawe" MaxWidth="247" TextTrimming="WordEllipsis"  Grid.Column="0" Grid.Row="1" toolkit:SlideInEffect.LineIndex="2" FontSize="24" />
+                        <TextBlock Text="4.35" Grid.Column="1" Grid.Row="0" Grid.RowSpan="2" toolkit:SlideInEffect.LineIndex="3" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="85" />
+                        <TextBlock Text="x1.4" Grid.Column="2" Grid.Row="1" VerticalAlignment="Top" toolkit:SlideInEffect.LineIndex="4" HorizontalAlignment="Right" FontSize="30" />
+                    </Grid>
+                </StackPanel>
+            </phone:PivotItem>-->
+        </phone:Pivot>
+    </Grid>
+    <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar x:Name="Menu" Opacity="0.6" Mode="Default" IsVisible="True" IsMenuEnabled="True">
+            <shell:ApplicationBarIconButton IconUri="/appbar/appbar.add.png" Text="Note" Click="ApplicationBarIconButton_Click"/>
+            <shell:ApplicationBar.MenuItems>
+                <shell:ApplicationBarMenuItem Text="fächer bearbeiten" Click="editfaecher_Click"/>
+                </shell:ApplicationBar.MenuItems>
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>
+</phone:PhoneApplicationPage>

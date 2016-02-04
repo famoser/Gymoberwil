@@ -1,0 +1,19 @@
+﻿<!--
+      *********    DIESE DATEI DARF NICHT GEÄNDERT WERDEN     *********
+      Diese Datei wurde von einem Designwerkzeug erstellt. Änderungen
+      dieser Datei können Fehler verursachen.
+-->
+<SampleData:nächsteFächer xmlns:SampleData="clr-namespace:Expression.Blend.SampleData.nächsteFächer" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+  <SampleData:nächsteFächer.Collection>
+    <SampleData:Item Zeit="18:30 - 19:20" Name="Pause" />
+    <SampleData:Item Zeit="18:30 - 19:20" Name="Mathematik" />
+    <SampleData:Item Zeit="18:30 - 19:20" Name="Deutsch" />
+    <SampleData:Item Zeit="18:30 - 19:20" Name="Italienisch" />
+    <SampleData:Item Zeit="18:30 - 19:20" Name="Dis duis" />
+    <SampleData:Item Zeit="Est hac amet" Name="Nunc est vivamus" />
+    <SampleData:Item Zeit="Ante aptent" Name="Hac leo" />
+    <SampleData:Item Zeit="Leo curae" Name="Mus nec" />
+    <SampleData:Item Zeit="Arcu donec" Name="Bibendum nullam non" />
+    <SampleData:Item Zeit="Mus nec etiam auctor" Name="Aptent per dictumst" />
+  </SampleData:nächsteFächer.Collection>
+</SampleData:nächsteFächer>

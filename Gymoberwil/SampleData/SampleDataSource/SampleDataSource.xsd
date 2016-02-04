@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+      *********    DIESE DATEI DARF NICHT GEÄNDERT WERDEN     *********
+      Diese Datei wurde von einem Designwerkzeug erstellt. Änderungen
+      dieser Datei können Fehler verursachen.
+-->
+<xs:schema xmlns:blend="http://schemas.microsoft.com/expression/blend/2008" xmlns:tns="Expression.Blend.SampleData.SampleDataSource" targetNamespace="Expression.Blend.SampleData.SampleDataSource" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="SampleDataSource" type="tns:SampleDataSource" />
+  <xs:complexType name="SampleDataSource">
+    <xs:sequence>
+      <xs:element name="Collection" type="tns:ItemCollection" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ItemCollection">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="Item" type="tns:Item" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Item">
+    <xs:attribute name="Name" type="xs:string" />
+    <xs:attribute blend:Format="Lorem ipsum" blend:FormatParameters="4,8" name="Beschreibung" type="xs:string" />
+    <xs:attribute name="Durchschnitt" type="xs:string" />
+    <xs:attribute name="Datum" type="xs:string" />
+    <xs:attribute name="Not" type="xs:string" />
+    <xs:attribute name="Zählweise" type="xs:string" />
+  </xs:complexType>
+</xs:schema>

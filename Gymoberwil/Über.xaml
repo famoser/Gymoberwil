@@ -1,0 +1,84 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="Gymoberwil.Über"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="True"
+    toolkit:TiltEffect.IsTiltEnabled="True">
+
+    <toolkit:TransitionService.NavigationInTransition>
+        <toolkit:NavigationInTransition>
+            <toolkit:NavigationInTransition.Backward>
+                <toolkit:TurnstileFeatherTransition Mode="BackwardIn"/>
+            </toolkit:NavigationInTransition.Backward>
+            <toolkit:NavigationInTransition.Forward>
+                <toolkit:TurnstileFeatherTransition Mode="ForwardIn"/>
+            </toolkit:NavigationInTransition.Forward>
+        </toolkit:NavigationInTransition>
+    </toolkit:TransitionService.NavigationInTransition>
+    <toolkit:TransitionService.NavigationOutTransition>
+        <toolkit:NavigationOutTransition>
+            <toolkit:NavigationOutTransition.Backward>
+                <toolkit:TurnstileFeatherTransition Mode="BackwardOut"/>
+            </toolkit:NavigationOutTransition.Backward>
+            <toolkit:NavigationOutTransition.Forward>
+                <toolkit:TurnstileFeatherTransition Mode="BackwardOut"/>
+            </toolkit:NavigationOutTransition.Forward>
+        </toolkit:NavigationOutTransition>
+    </toolkit:TransitionService.NavigationOutTransition>
+    <!--LayoutRoot ist das Stammraster, in dem alle anderen Seiteninhalte platziert werden-->
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!--TitlePanel enthält den Namen der Anwendung und den Seitentitel-->
+        <StackPanel Grid.Row="0" Margin="12,17,0,28">
+            <TextBlock Text="ÜBER DIESE ANWENDUNG" toolkit:TurnstileFeatherEffect.FeatheringIndex="0" Style="{StaticResource PhoneTextNormalStyle}"/>
+        </StackPanel>
+
+        <!--ContentPanel - zusätzliche Inhalte hier platzieren-->
+        <Grid x:Name="ContentPanel" Grid.Row="1"  toolkit:TurnstileFeatherEffect.FeatheringIndex="1" Margin="12,0,12,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+                
+             <RichTextBox>
+                <Paragraph>
+                    <Run Text="Dies ist eine App für das Gymnasium Oberwil, die gratis für die Schüler und Schülerinnen dieses Gymnasiums entwickelt wurde." />
+                    <LineBreak/>
+                    <LineBreak/>
+                    <Run Text="Ich schliesse das Gymnasium diesen Dezember ab, und suche daher einen Nachfolger, der die Entwicklung dieser App weiterführt." />
+                    <LineBreak/>
+                    <LineBreak/>
+                    <Run Text="Hast du Bugs gefunden oder Verbesserungsvorschläge?"/>
+                    <LineBreak/>
+                    <Run Text="Bist du selber ein Programmierer (in C#) und möchtest an der Weiterentwicklung dieser App teilnehmen?"/>
+                    <LineBreak/>
+                    <LineBreak/>
+                    <Run FontWeight="Bold" Text="Schreibe mir doch eine Email: "/>
+                    <Hyperlink Foreground="#FF17BDEE">
+                        <Run Text="GymoberwilApp@outlook.com"/>
+                    </Hyperlink>
+                    <LineBreak/>
+                    <LineBreak/>
+                    <Run Text="Wenn dir diese App gefällt, würde mich sehr über eine kleine Spende freuen, schliesslich ich habe mehrere Wochen in die Entwicklung investiert."/>
+                </Paragraph>
+            </RichTextBox>
+            <Button Grid.Row="1" x:Name="BuyMeABeer" Content="Spendier mir ein Bier!" Click="BuyMeABeer_Click" />
+        </Grid>
+    </Grid>
+
+</phone:PhoneApplicationPage>

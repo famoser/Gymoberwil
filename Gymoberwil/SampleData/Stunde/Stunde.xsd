@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+      *********    DIESE DATEI DARF NICHT GEÄNDERT WERDEN     *********
+      Diese Datei wurde von einem Designwerkzeug erstellt. Änderungen
+      dieser Datei können Fehler verursachen.
+-->
+<xs:schema xmlns:blend="http://schemas.microsoft.com/expression/blend/2008" xmlns:tns="Expression.Blend.SampleData.Stunde" targetNamespace="Expression.Blend.SampleData.Stunde" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="Stunde" type="tns:Stunde" />
+  <xs:complexType name="Stunde">
+    <xs:sequence>
+      <xs:element name="Collection" type="tns:ItemCollection" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ItemCollection">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="Item" type="tns:Item" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Item">
+    <xs:attribute name="Zeit" type="xs:string" />
+    <xs:attribute blend:FormatParameters="1,3" name="FachTeil2" type="xs:string" />
+    <xs:attribute blend:FormatParameters="1" name="Opacity" type="xs:double" />
+    <xs:attribute name="FachTeil1" type="xs:string" />
+    <xs:attribute name="Zimmernummer" type="xs:string" />
+    <xs:attribute name="Lehrer" type="xs:string" />
+    <xs:attribute blend:FormatParameters="1" name="OpacityContrary" type="xs:double" />
+  </xs:complexType>
+</xs:schema>

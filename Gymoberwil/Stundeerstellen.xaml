@@ -1,0 +1,151 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="Gymoberwil.Stundeerstellen"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    toolkit:TiltEffect.IsTiltEnabled="True"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="True" BackKeyPress="PhoneApplicationPage_BackKeyPress">
+
+    <toolkit:TransitionService.NavigationInTransition>
+        <toolkit:NavigationInTransition>
+            <toolkit:NavigationInTransition.Backward>
+                <toolkit:TurnstileFeatherTransition Mode="BackwardIn"/>
+            </toolkit:NavigationInTransition.Backward>
+            <toolkit:NavigationInTransition.Forward>
+                <toolkit:TurnstileFeatherTransition Mode="ForwardIn"/>
+            </toolkit:NavigationInTransition.Forward>
+        </toolkit:NavigationInTransition>
+    </toolkit:TransitionService.NavigationInTransition>
+    <toolkit:TransitionService.NavigationOutTransition>
+        <toolkit:NavigationOutTransition>
+            <toolkit:NavigationOutTransition.Backward>
+                <toolkit:TurnstileFeatherTransition Mode="BackwardOut"/>
+            </toolkit:NavigationOutTransition.Backward>
+            <toolkit:NavigationOutTransition.Forward>
+                <toolkit:TurnstileFeatherTransition Mode="BackwardOut"/>
+            </toolkit:NavigationOutTransition.Forward>
+        </toolkit:NavigationOutTransition>
+    </toolkit:TransitionService.NavigationOutTransition>
+
+
+    <!--LayoutRoot ist das Stammraster, in dem alle anderen Seiteninhalte platziert werden-->
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!--TitlePanel enthält den Namen der Anwendung und den Seitentitel-->
+        <StackPanel Grid.Row="0" Margin="12,17,0,28">
+            <TextBlock Text="STUNDE BEARBEITEN"  toolkit:TurnstileFeatherEffect.FeatheringIndex="0" Style="{StaticResource PhoneTextNormalStyle}"/>
+        </StackPanel>
+
+        <!--ContentPanel - zusätzliche Inhalte hier platzieren-->
+        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <toolkit:ListPicker toolkit:TurnstileFeatherEffect.FeatheringIndex="1" Header="Zeit" Grid.Row="1" Grid.ColumnSpan="2" Foreground="Black" Background="White" x:Name="zeitpicker" ItemsSource="{Binding}" SelectionChanged="zeitpicker_SelectionChanged" ExpansionMode="FullScreenOnly" 
+                                FullModeHeader="ZEIT" 
+                                CacheMode="BitmapCache">
+                <toolkit:ListPicker.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </toolkit:ListPicker.ItemTemplate>
+                <toolkit:ListPicker.FullModeItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal" Margin="0 21 0 20">
+                            <TextBlock Text="{Binding}"
+                                       Margin="16 0 0 0"
+                                       FontSize="43"
+                                       FontFamily="{StaticResource PhoneFontFamilyLight}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </toolkit:ListPicker.FullModeItemTemplate>
+            </toolkit:ListPicker>
+            <toolkit:ListPicker toolkit:TurnstileFeatherEffect.FeatheringIndex="2" Header="Fach" Grid.Row="2" Grid.ColumnSpan="2" Foreground="Black" Background="White" x:Name="fachpicker" ItemsSource="{Binding}" SelectionChanged="fachpicker_SelectionChanged" ExpansionMode="FullScreenOnly" 
+                                FullModeHeader="FACH" 
+                                CacheMode="BitmapCache">
+                <toolkit:ListPicker.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Name}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </toolkit:ListPicker.ItemTemplate>
+                <toolkit:ListPicker.FullModeItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal" Margin="0 21 0 20">
+                            <TextBlock Text="{Binding Name}"
+                                       Margin="16 0 0 0"
+                                       FontSize="43"
+                                       FontFamily="{StaticResource PhoneFontFamilyLight}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </toolkit:ListPicker.FullModeItemTemplate>
+            </toolkit:ListPicker>
+            <!-- hold one free for customfach -->
+            <TextBlock toolkit:TurnstileFeatherEffect.FeatheringIndex="3" Grid.Row="5" Text="Zimmernummer"  FontSize="34" VerticalAlignment="Center" Style="{StaticResource PhoneTextNormalStyle}" />
+            <TextBlock toolkit:TurnstileFeatherEffect.FeatheringIndex="4" Grid.Row="6" Text="Lehrkraft" FontSize="34" VerticalAlignment="Center" Style="{StaticResource PhoneTextNormalStyle}" />
+            <TextBox toolkit:TurnstileFeatherEffect.FeatheringIndex="3" x:Name="Zimmernummer" Text="4012" Grid.Column="1" Grid.Row="5" />
+            <TextBox toolkit:TurnstileFeatherEffect.FeatheringIndex="4" x:Name="Lehrperson" Text="Marc Rohner" Grid.Column="1" Grid.Row="6" />
+
+            <toolkit:ListPicker toolkit:TurnstileFeatherEffect.FeatheringIndex="5" Header="Woche" Grid.Row="7" Grid.ColumnSpan="2" Foreground="Black" Background="White" x:Name="wochenpicker" ItemsSource="{Binding}" />
+
+            <toolkit:ListPicker toolkit:TurnstileFeatherEffect.FeatheringIndex="6" Foreground="Black" Background="White"   x:Name="Farbe" Grid.Row="8" Grid.ColumnSpan="2" ItemsSource="{Binding}" 
+                                Header="Farbe" 
+                                FullModeHeader="FARBE" 
+                                CacheMode="BitmapCache">
+                <toolkit:ListPicker.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <Rectangle Fill="{Binding Couleur}" Width="24" Height="24"/>
+                            <TextBlock Text="{Binding Name}" Margin="12 0 0 0"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </toolkit:ListPicker.ItemTemplate>
+                <toolkit:ListPicker.FullModeItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal" Margin="0 21 0 20">
+                            <Rectangle Fill="{Binding Couleur}" Width="43" Height="43"/>
+                            <TextBlock Text="{Binding Name}"
+                                       Margin="16 0 0 0"
+                                       FontSize="43"
+                                       FontFamily="{StaticResource PhoneFontFamilyLight}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </toolkit:ListPicker.FullModeItemTemplate>
+            </toolkit:ListPicker>
+            <Button toolkit:TurnstileFeatherEffect.FeatheringIndex="7" x:Name="Speichern" Content="Speichern" Grid.Row="9" Grid.ColumnSpan="2" Tap="Button_Tap" />
+        </Grid>
+    </Grid>
+
+</phone:PhoneApplicationPage>

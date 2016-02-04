@@ -1,0 +1,77 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="Gymoberwil.Einstellungen"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    toolkit:TiltEffect.IsTiltEnabled="True"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="True">
+
+    <toolkit:TransitionService.NavigationInTransition>
+        <toolkit:NavigationInTransition>
+            <toolkit:NavigationInTransition.Backward>
+                <toolkit:TurnstileFeatherTransition Mode="BackwardIn"/>
+            </toolkit:NavigationInTransition.Backward>
+            <toolkit:NavigationInTransition.Forward>
+                <toolkit:TurnstileFeatherTransition Mode="ForwardIn"/>
+            </toolkit:NavigationInTransition.Forward>
+        </toolkit:NavigationInTransition>
+    </toolkit:TransitionService.NavigationInTransition>
+    <toolkit:TransitionService.NavigationOutTransition>
+        <toolkit:NavigationOutTransition>
+            <toolkit:NavigationOutTransition.Backward>
+                <toolkit:TurnstileFeatherTransition Mode="BackwardOut"/>
+            </toolkit:NavigationOutTransition.Backward>
+            <toolkit:NavigationOutTransition.Forward>
+                <toolkit:TurnstileFeatherTransition Mode="BackwardOut"/>
+            </toolkit:NavigationOutTransition.Forward>
+        </toolkit:NavigationOutTransition>
+    </toolkit:TransitionService.NavigationOutTransition>
+
+
+    <!--LayoutRoot ist das Stammraster, in dem alle anderen Seiteninhalte platziert werden-->
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!--TitlePanel enthält den Namen der Anwendung und den Seitentitel-->
+        <StackPanel Grid.Row="0" Margin="12,17,0,28">
+            <TextBlock Text="Einstellungen" toolkit:TurnstileFeatherEffect.FeatheringIndex="0" Style="{StaticResource PhoneTextNormalStyle}"/>
+        </StackPanel>
+
+        <!--ContentPanel - zusätzliche Inhalte hier platzieren-->
+        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+            <TextBlock Margin="12,0,0,0" FontSize="40" Text="Bus"  Grid.Row="0" toolkit:TurnstileFeatherEffect.FeatheringIndex="1"/>
+            <toolkit:ListPicker toolkit:TurnstileFeatherEffect.FeatheringIndex="2" Header="bevorzugter Bus" Grid.Row="1" Grid.ColumnSpan="2" Foreground="Black" Background="White" x:Name="buspicker" >
+                <toolkit:ListPickerItem Content="Bus 61 (Station: Hohestrasse)" />
+                <toolkit:ListPickerItem Content="Bus 64 (Station: Gymnasium)" />
+            </toolkit:ListPicker>
+            <toolkit:ListPicker toolkit:TurnstileFeatherEffect.FeatheringIndex="3"  Header="bevorzugte Richtung" Grid.Row="2" Grid.ColumnSpan="2" Foreground="Black" Background="White" x:Name="richtungpicker"  >
+                <toolkit:ListPickerItem Content="Oberwil" />
+                <toolkit:ListPickerItem Content="Allschwil" />
+            </toolkit:ListPicker>
+            <TextBlock Margin="12,0,0,0" FontSize="20" Text="Klasse"  Grid.Row="3" toolkit:TurnstileFeatherEffect.FeatheringIndex="4"/>
+            <TextBox x:Name="klasse" Grid.Row="4"  toolkit:TurnstileFeatherEffect.FeatheringIndex="5" />
+            <Button Content="Speichern" x:Name="speichern" Grid.Row="5" toolkit:TurnstileFeatherEffect.FeatheringIndex="6" Tap="Button_Tap" />
+        </Grid>
+    </Grid>
+
+</phone:PhoneApplicationPage>

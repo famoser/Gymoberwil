@@ -1,0 +1,103 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="Gymoberwil.Notehinzufügen"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    toolkit:TiltEffect.IsTiltEnabled="True"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="True" BackKeyPress="PhoneApplicationPage_BackKeyPress">
+
+    <toolkit:TransitionService.NavigationInTransition>
+        <toolkit:NavigationInTransition>
+            <toolkit:NavigationInTransition.Backward>
+                <toolkit:TurnstileFeatherTransition Mode="BackwardIn"/>
+            </toolkit:NavigationInTransition.Backward>
+            <toolkit:NavigationInTransition.Forward>
+                <toolkit:TurnstileFeatherTransition Mode="ForwardIn"/>
+            </toolkit:NavigationInTransition.Forward>
+        </toolkit:NavigationInTransition>
+    </toolkit:TransitionService.NavigationInTransition>
+    <toolkit:TransitionService.NavigationOutTransition>
+        <toolkit:NavigationOutTransition>
+            <toolkit:NavigationOutTransition.Backward>
+                <toolkit:TurnstileFeatherTransition Mode="BackwardOut"/>
+            </toolkit:NavigationOutTransition.Backward>
+            <toolkit:NavigationOutTransition.Forward>
+                <toolkit:TurnstileFeatherTransition Mode="ForwardOut"/>
+            </toolkit:NavigationOutTransition.Forward>
+        </toolkit:NavigationOutTransition>
+    </toolkit:TransitionService.NavigationOutTransition>
+
+
+    <!--LayoutRoot ist das Stammraster, in dem alle anderen Seiteninhalte platziert werden-->
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!--TitlePanel enthält den Namen der Anwendung und den Seitentitel-->
+        <StackPanel Grid.Row="0" Margin="12,17,0,28">
+            <TextBlock x:Name="title" Text="NOTE HINZUFÜGEN"  toolkit:TurnstileFeatherEffect.FeatheringIndex="0" Style="{StaticResource PhoneTextNormalStyle}"/>
+        </StackPanel>
+
+        <!--ContentPanel - zusätzliche Inhalte hier platzieren-->
+        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <toolkit:ListPicker  toolkit:TurnstileFeatherEffect.FeatheringIndex="1" Header="Fach" Grid.Row="1" Grid.ColumnSpan="2" Foreground="Black" Background="White" x:Name="fächerpicker" ItemsSource="{Binding}" ExpansionMode="FullScreenOnly" 
+                                FullModeHeader="FACH" 
+                                CacheMode="BitmapCache">
+                <toolkit:ListPicker.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Name}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </toolkit:ListPicker.ItemTemplate>
+                <toolkit:ListPicker.FullModeItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal" Margin="0 21 0 20">
+                            <TextBlock Text="{Binding Name}"
+                                       Margin="16 0 0 0"
+                                       FontSize="43"
+                                       FontFamily="{StaticResource PhoneFontFamilyLight}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </toolkit:ListPicker.FullModeItemTemplate>
+            </toolkit:ListPicker>
+            <TextBlock toolkit:TurnstileFeatherEffect.FeatheringIndex="2" Grid.Row="2" Text="Note"  FontSize="34" VerticalAlignment="Center" Style="{StaticResource PhoneTextNormalStyle}" />
+            <TextBlock toolkit:TurnstileFeatherEffect.FeatheringIndex="3" Grid.Row="3" Text="Zählweise" FontSize="34" VerticalAlignment="Center" Style="{StaticResource PhoneTextNormalStyle}" />
+            <TextBlock toolkit:TurnstileFeatherEffect.FeatheringIndex="4" Grid.Row="4" Text="Datum" FontSize="34" VerticalAlignment="Center" Style="{StaticResource PhoneTextNormalStyle}" />
+            <TextBlock toolkit:TurnstileFeatherEffect.FeatheringIndex="5" Grid.Row="5" Text="Beschreibung" FontSize="34" VerticalAlignment="Center" Style="{StaticResource PhoneTextNormalStyle}" />
+            <TextBox toolkit:TurnstileFeatherEffect.FeatheringIndex="2" x:Name="Note" Text="4.25" Grid.Column="1" Grid.Row="2" Tap="TextBox_Tap" />
+            <TextBox toolkit:TurnstileFeatherEffect.FeatheringIndex="3" x:Name="Zählweise" Text="1" Grid.Column="1" Grid.Row="3" Tap="TextBox_Tap" />
+            <TextBox toolkit:TurnstileFeatherEffect.FeatheringIndex="4" x:Name="Datum" Text="18.04.2014" Grid.Column="1" Grid.Row="4" Tap="TextBox_Tap" />
+            <TextBox toolkit:TurnstileFeatherEffect.FeatheringIndex="5" x:Name="Beschreibung" Text="sinus funktionen" Grid.Column="1" Grid.Row="5" Tap="TextBox_Tap" />
+            <Button toolkit:TurnstileFeatherEffect.FeatheringIndex="6" x:Name="Speichern" Content="Speichern" Grid.Row="6" Grid.ColumnSpan="2" Tap="Button_Tap" />
+            <Button toolkit:TurnstileFeatherEffect.FeatheringIndex="7" x:Name="Löschen" Content="Löschen" Opacity="0" Grid.Row="7" Grid.ColumnSpan="2" Tap="Delete_Tap" />
+
+        </Grid>
+    </Grid>
+
+</phone:PhoneApplicationPage>

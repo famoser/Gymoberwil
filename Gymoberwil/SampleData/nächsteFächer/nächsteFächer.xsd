@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+      *********    DIESE DATEI DARF NICHT GEÄNDERT WERDEN     *********
+      Diese Datei wurde von einem Designwerkzeug erstellt. Änderungen
+      dieser Datei können Fehler verursachen.
+-->
+<xs:schema xmlns:blend="http://schemas.microsoft.com/expression/blend/2008" xmlns:tns="Expression.Blend.SampleData.nächsteFächer" targetNamespace="Expression.Blend.SampleData.nächsteFächer" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="nächsteFächer" type="tns:nächsteFächer" />
+  <xs:complexType name="nächsteFächer">
+    <xs:sequence>
+      <xs:element name="Collection" type="tns:ItemCollection" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ItemCollection">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="Item" type="tns:Item" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Item">
+    <xs:attribute name="Zeit" type="xs:string" />
+    <xs:attribute name="Name" type="xs:string" />
+  </xs:complexType>
+</xs:schema>

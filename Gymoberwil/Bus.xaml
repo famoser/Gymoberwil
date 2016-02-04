@@ -1,0 +1,121 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="Gymoberwil.Apps.PivotPage1"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    toolkit:TiltEffect.IsTiltEnabled="True"
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait"  Orientation="Portrait"
+    shell:SystemTray.IsVisible="True" BackKeyPress="PhoneApplicationPage_BackKeyPress" >
+
+
+    <toolkit:TransitionService.NavigationInTransition>
+        <toolkit:NavigationInTransition>
+            <toolkit:NavigationInTransition.Backward>
+                <toolkit:TurnstileFeatherTransition Mode="BackwardIn"/>
+            </toolkit:NavigationInTransition.Backward>
+            <toolkit:NavigationInTransition.Forward>
+                <toolkit:TurnstileFeatherTransition Mode="ForwardIn"/>
+            </toolkit:NavigationInTransition.Forward>
+        </toolkit:NavigationInTransition>
+    </toolkit:TransitionService.NavigationInTransition>
+    <toolkit:TransitionService.NavigationOutTransition>
+        <toolkit:NavigationOutTransition>
+            <toolkit:NavigationOutTransition.Backward>
+                <toolkit:TurnstileFeatherTransition Mode="BackwardOut"/>
+            </toolkit:NavigationOutTransition.Backward>
+            <toolkit:NavigationOutTransition.Forward>
+                <toolkit:TurnstileFeatherTransition Mode="ForwardOut"/>
+            </toolkit:NavigationOutTransition.Forward>
+        </toolkit:NavigationOutTransition>
+    </toolkit:TransitionService.NavigationOutTransition>
+
+
+    <!--LayoutRoot ist das Stammraster, in dem alle anderen Seiteninhalte platziert werden-->
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <!--Pivotsteuerelement-->
+        <phone:Pivot x:Name="BusPivot" Title="BUS" toolkit:TurnstileFeatherEffect.FeatheringIndex="0">
+            <!--Pivotelement eins-->
+
+            <phone:PivotItem Header="61">
+                <ScrollViewer>
+                    <phone:LongListSelector x:Name="Bus61"  toolkit:TurnstileFeatherEffect.FeatheringIndex="1" >
+                    <phone:LongListSelector.ItemTemplate>
+                        <DataTemplate>
+                                <StackPanel>
+                                    <Grid toolkit:SlideInEffect.LineIndex="0" Margin="11,2,0,1" Width="445" HorizontalAlignment="Left" Background="Black">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Text="{Binding Richtung}" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" toolkit:SlideInEffect.LineIndex="2" VerticalAlignment="Bottom" FontWeight="Bold" FontSize="50" />
+                                        <TextBlock Text="{Binding Difference}" Grid.Column="0" Grid.Row="1" toolkit:SlideInEffect.LineIndex="2" FontSize="24" />
+                                        <TextBlock Text="{Binding Zeit}" Grid.Column="1" Grid.Row="0" Grid.RowSpan="2" toolkit:SlideInEffect.LineIndex="3" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="85" />
+                                    </Grid>
+                                </StackPanel>
+                            </DataTemplate>
+                    </phone:LongListSelector.ItemTemplate>
+                </phone:LongListSelector>
+                </ScrollViewer>
+            </phone:PivotItem>
+
+            <!--Pivotelement zwei-->
+            <phone:PivotItem Header="64">
+                <phone:LongListSelector x:Name="Bus64"  toolkit:TurnstileFeatherEffect.FeatheringIndex="-1" ScrollViewer.ManipulationMode="System" Grid.Row="7" ScrollViewer.VerticalScrollBarVisibility="Disabled">
+                    <phone:LongListSelector.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <Grid toolkit:SlideInEffect.LineIndex="0" Margin="11,2,0,1" Width="445" HorizontalAlignment="Left" Background="Black">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Text="{Binding Richtung}" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" toolkit:SlideInEffect.LineIndex="2" VerticalAlignment="Bottom" FontWeight="Bold" FontSize="50" />
+                                    <TextBlock Text="{Binding Difference}" Grid.Column="0" Grid.Row="1" toolkit:SlideInEffect.LineIndex="2" FontSize="24" />
+                                    <TextBlock Text="{Binding Zeit}" Grid.Column="1" Grid.Row="0" Grid.RowSpan="2" toolkit:SlideInEffect.LineIndex="3" VerticalAlignment="Center" FontSize="85" />
+                                 </Grid>
+                            </StackPanel>
+                        </DataTemplate>
+                    </phone:LongListSelector.ItemTemplate>
+                </phone:LongListSelector>
+            </phone:PivotItem>
+
+
+            <!--Pivotelement zwei 
+            <phone:PivotItem Header="64">
+               <StackPanel>
+                   <Grid toolkit:SlideInEffect.LineIndex="0" Margin="11,2,0,1" Width="445" HorizontalAlignment="Left" Background="Black">
+                        <Grid.RowDefinitions>
+                              <RowDefinition Height="auto"/>
+                              <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                              <ColumnDefinition Width="*" />
+                              <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="Mathe" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" toolkit:SlideInEffect.LineIndex="1" VerticalAlignment="Bottom" FontWeight="Bold" FontSize="50" />
+                        <TextBlock Text="keine oten erfasst" Grid.Column="0" Grid.Row="1" toolkit:SlideInEffect.LineIndex="2" FontSize="24" />
+                        <TextBlock Text="4.621" Grid.Column="1" Grid.Row="0" Grid.RowSpan="2" toolkit:SlideInEffect.LineIndex="2" VerticalAlignment="Center" FontSize="95" />
+                    </Grid>
+                </StackPanel>
+            </phone:PivotItem>
+            -->
+        </phone:Pivot>
+    </Grid>
+    
+</phone:PhoneApplicationPage>

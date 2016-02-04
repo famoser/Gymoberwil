@@ -1,0 +1,207 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="Gymoberwil.Stundenplanaktualisieren"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    toolkit:TiltEffect.IsTiltEnabled="True"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="True" >
+
+
+    <toolkit:TransitionService.NavigationInTransition>
+        <toolkit:NavigationInTransition>
+            <toolkit:NavigationInTransition.Backward>
+                <toolkit:TurnstileFeatherTransition Mode="BackwardIn"/>
+            </toolkit:NavigationInTransition.Backward>
+            <toolkit:NavigationInTransition.Forward>
+                <toolkit:TurnstileFeatherTransition Mode="ForwardIn"/>
+            </toolkit:NavigationInTransition.Forward>
+        </toolkit:NavigationInTransition>
+    </toolkit:TransitionService.NavigationInTransition>
+    <toolkit:TransitionService.NavigationOutTransition>
+        <toolkit:NavigationOutTransition>
+            <toolkit:NavigationOutTransition.Backward>
+                <toolkit:TurnstileFeatherTransition Mode="BackwardOut"/>
+            </toolkit:NavigationOutTransition.Backward>
+            <toolkit:NavigationOutTransition.Forward>
+                <toolkit:TurnstileFeatherTransition Mode="ForwardOut"/>
+            </toolkit:NavigationOutTransition.Forward>
+        </toolkit:NavigationOutTransition>
+    </toolkit:TransitionService.NavigationOutTransition>
+
+    <!--LayoutRoot ist das Stammraster, in dem alle anderen Seiteninhalte platziert werden-->
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!--TitlePanel enthält den Namen der Anwendung und den Seitentitel-->
+        <StackPanel Grid.Row="0" Margin="12,17,0,28">
+            <TextBlock Text="STUNDENPLAN AKTUALISIEREN"  toolkit:TurnstileFeatherEffect.FeatheringIndex="0" Style="{StaticResource PhoneTextNormalStyle}"/>
+        </StackPanel>
+
+        <!--ContentPanel - zusätzliche Inhalte hier platzieren-->
+        <Grid x:Name="ContentPanel" toolkit:TurnstileFeatherEffect.FeatheringIndex="1" Grid.Row="1" Margin="12,0,12,0">
+            <Grid x:Name="Einrichten0" toolkit:TurnstileFeatherEffect.FeatheringIndex="2" Opacity="1" IsHitTestVisible="True">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <RichTextBox Margin="12,70,0,60" Grid.ColumnSpan="2">
+                    <Paragraph>
+                        <Run Text="isy.gymoberwil.ch enhält keine Stundenplaninformationen mehr. Du kannst die Stundenplanfunktion der App trotzdem nutzen, jedoch muss dabei jede Lektion einzeln eingetipt werden."  />
+                        <LineBreak />
+                        <LineBreak />
+                        <Run Text="Der Stundenplan ist nun nur noch auf schulnetz.sbl.ch verfügbar. An einer Lösung wird gearbeitet, jedoch habe ich zurzeit nicht viel Zeit dafür." />
+                        <LineBreak />
+                        <Run Text="Bitte entschuldigen die Umstände!" />
+                        <LineBreak />
+                        <LineBreak />
+                        <Run Text="Klicke nun auf abbrechen, um den Stundenplan manuell zu erstellen." />
+                    </Paragraph>
+                </RichTextBox>
+                <Button Grid.Row="1" Grid.Column="0" Content="Abbrechen" Tap="Button_Tap"  />
+                <!--<Button Grid.Row="1" Grid.Column="1" Content="Weiter" Tap="Button_Tap_1"  />-->
+            </Grid>
+            <Grid x:Name="Einrichten1" toolkit:TurnstileFeatherEffect.FeatheringIndex="2" Opacity="0" IsHitTestVisible="False">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <RichTextBox Margin="12,70,0,60" Grid.ColumnSpan="2">
+                    <Paragraph>
+                        <Run Text="Diese App unterstützt das automatische herunterladen des Stundenplans von isy.gymoberwil.ch."  />
+                        <LineBreak />
+                        <LineBreak />
+                        <Run Text="Dazu werden unter anderem benötigt:" />
+                        <LineBreak />
+                        <Run Text="   a) Zugangsdaten zu der Webseite des Gymnasiums Oberwils, und" />
+                        <LineBreak />
+                        <Run Text="   b) das Vertrauen, dass ich diese Zugangsdaten nicht speichere und an namibische Prinzen verkaufe" />
+                        <LineBreak />
+                        <LineBreak />
+                        <Run Text="Klicke auf weiter, wenn du dir dieses Risikos bewusst bist. " />
+                        <LineBreak />
+                        <Run Text="Klicke auf abbrechen, wenn du den Stundenplan manuell erstellen möchtest." />
+                    </Paragraph>
+                </RichTextBox>
+                <Button Grid.Row="1" Grid.Column="0" Content="Abbrechen" Tap="Button_Tap"  />
+                <Button Grid.Row="1" Grid.Column="1" Content="Weiter" Tap="Button_Tap_1"  />
+            </Grid>
+
+            <!-- Ansicht eins -->
+
+            <!-- Ansicht zwei -->
+            <Grid x:Name="Einrichten2" Opacity="0" IsHitTestVisible="False">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <RichTextBox Margin="12,70,0,30" Grid.Row="0" Grid.ColumnSpan="2">
+                    <Paragraph>
+                        <Run Text="Bitte gib nun deine Klasse und dein Schwerpunktfach im Format STUFEklasse_SCHWERPUNKTFACHKÜRZEL ein" />
+                        <LineBreak />
+                        <LineBreak />
+                        <Run Text="Zum Beispiel 1a_A oder 2g_I" />
+                        <LineBreak />
+                    </Paragraph>
+                </RichTextBox>
+                <TextBox x:Name="Klasse" Margin="0,0,0,30" Text="3a_A" Grid.Row="1" Grid.ColumnSpan="2"/>
+                <Button Content="Weiter" Grid.Column="1" Grid.Row="2" Tap="Button_Tap_2" />
+            </Grid>
+
+            <!-- Ansicht drei -->
+            <Grid x:Name="Einrichten3" Opacity="0" IsHitTestVisible="False">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <phone:WebBrowser  x:Name="Webbrowser"   Grid.Row="0" Grid.Column="0" Width="460" Height="700" HorizontalAlignment="Left" VerticalAlignment="Top" Navigated="Webbrowser_Navigated" LoadCompleted="Webbrowser_LoadCompleted" />
+            </Grid>
+
+            <!-- Ansicht vier -->
+            <Grid x:Name="Einrichten4" Opacity="0"  IsHitTestVisible="False">
+                <RichTextBox Margin="12,70,0,30">
+                    <Paragraph>
+                        <Run Text="Der Stundenplan wird nun heruntergeladen und erstellt" />
+                        <LineBreak />
+                        <LineBreak />
+                        <Run Text="Bitte warte einen kleinen Moment" />
+                        <LineBreak />
+                    </Paragraph>
+                </RichTextBox>
+            </Grid>
+
+            <!-- Ansicht fünf -->
+            <Grid x:Name="Einrichten5" Opacity="0"  IsHitTestVisible="False">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                </Grid.RowDefinitions>
+                <RichTextBox Grid.Row="0" Margin="12,70,0,30">
+                    <Paragraph>
+                        <Run Text="Es werden hier alle Fächer angezeigt, die zur selben Zeit stattfinden. Bitte wähle dasjenige aus, an welchem du teilnehmen wirst (klassisches Beispiel: Sport Knaben/Sport Mädchen)" />
+                        <LineBreak />
+                    </Paragraph>
+                </RichTextBox>
+                <ScrollViewer Grid.Row="1">
+                    <phone:LongListSelector x:Name="Übersicht" >
+                        <phone:LongListSelector.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel>
+                                    <toolkit:ListPicker Grid.Row="1" Grid.ColumnSpan="2" Foreground="Black" Background="White" x:Name="fächerpicker" ItemsSource="{Binding}" >
+                                        <toolkit:ListPicker.Header>
+                                            <TextBlock Text="Fach" Foreground="White" Style="{StaticResource PhoneTextNormalStyle}"  FontSize="34" />
+                                        </toolkit:ListPicker.Header>
+                                    </toolkit:ListPicker>
+                                </StackPanel>
+                            </DataTemplate>
+                        </phone:LongListSelector.ItemTemplate>
+                    </phone:LongListSelector>
+                </ScrollViewer>
+            </Grid>
+
+
+            <!-- Ansicht sechs -->
+            <Grid x:Name="Einrichten6" Opacity="0"  IsHitTestVisible="False">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                </Grid.RowDefinitions>
+                <RichTextBox Grid.Row="0" Margin="12,70,0,30">
+                    <Paragraph>
+                        <Run Text="Der Stundenplan wurde erfolgreich heruntergeladen" />
+                        <LineBreak />
+                        <LineBreak />
+                        <Run Text="Einige Fächer konnten nicht heruntergeladen werden. Bitte überprüfe den Stundenplan und trage die fehlenden Fächer nach." />
+                        <LineBreak />
+                    </Paragraph>
+                </RichTextBox>
+                <Button Grid.Row="1" Grid.Column="0" Content="Ok" Tap="Button_Tap"  />
+            </Grid>
+
+        </Grid>
+    </Grid>
+
+</phone:PhoneApplicationPage>

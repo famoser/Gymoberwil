@@ -1,0 +1,14 @@
+﻿<!--
+      *********    DIESE DATEI DARF NICHT GEÄNDERT WERDEN     *********
+      Diese Datei wurde von einem Designwerkzeug erstellt. Änderungen
+      dieser Datei können Fehler verursachen.
+-->
+<SampleData:Stunde xmlns:SampleData="clr-namespace:Expression.Blend.SampleData.Stunde" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+  <SampleData:Stunde.Collection>
+    <SampleData:Item Zeit="18:30 - 19:45" FachTeil2="athematik" Opacity="1" FachTeil1="M" Zimmernummer="3012" Lehrer="Aramis Keller" OpacityContrary="0" />
+    <SampleData:Item Zeit="12:30 - 09.31" FachTeil2="rei" Opacity="0" FachTeil1="F" Zimmernummer="1045" Lehrer="Andreas Motherfucking Nüesch" OpacityContrary="1" />
+    <SampleData:Item Zeit="08:45 - 09.56" FachTeil2="talienisch" Opacity="1" FachTeil1="I" Zimmernummer="3012" Lehrer="Salm" OpacityContrary="0" />
+    <SampleData:Item Zeit="11:11 - 11:11" FachTeil2="ranzösisch" Opacity="1" FachTeil1="F" Zimmernummer="7201" Lehrer="Aptent aliquam auctor aliquet" OpacityContrary="0" />
+    <SampleData:Item Zeit="00:00 - 00.00" FachTeil2="irtschaft" Opacity="1" FachTeil1="W" Zimmernummer="4012" Lehrer="Erat eros fusce mus" OpacityContrary="0" />
+  </SampleData:Stunde.Collection>
+</SampleData:Stunde>
